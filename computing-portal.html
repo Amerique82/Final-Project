@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computing Portal — Student Community</title>
+<style>
+  :root{
+    --ink:#13243b;
+    --ink-soft:#4a5a72;
+    --brand:#0a5cab;
+    --brand-dark:#073e74;
+    --accent:#10b3a6;
+    --bg:#f4f7fb;
+    --line:#e2e8f2;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  /* Top bar */
+  .topbar{background:var(--brand-dark);color:#cfe0f2;font-size:.8rem}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+  .topbar a:hover{color:#fff}
+
+  /* Header / Nav */
+  header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+  .nav{display:flex;justify-content:space-between;align-items:center;height:74px}
+  .brand{display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:1.15rem;letter-spacing:-.02em}
+  .brand .dot{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800}
+  .menu{display:flex;gap:1.7rem;font-weight:500;font-size:.93rem}
+  .menu a{color:var(--ink-soft);padding:.3rem 0;border-bottom:2px solid transparent;transition:.2s}
+  .menu a:hover{color:var(--brand);border-color:var(--brand)}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,var(--brand-dark),var(--brand) 65%,var(--accent));color:#fff;padding:104px 0}
+  .hero .kicker{text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;opacity:.85;font-weight:600}
+  .hero h1{font-size:3rem;line-height:1.1;margin:.5rem 0 1rem;letter-spacing:-.03em;max-width:20ch}
+  .hero p{font-size:1.18rem;max-width:62ch;opacity:.93}
+  .hero .actions{margin-top:2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+  .btn{display:inline-block;font-weight:600;padding:.85rem 1.7rem;border-radius:10px;transition:.2s}
+  .btn-light{background:#fff;color:var(--brand-dark)}
+  .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.4)}
+  .btn:hover{transform:translateY(-2px)}
+
+  /* Sections */
+  section.block{padding:74px 0}
+  .head{text-align:center;max-width:64ch;margin:0 auto 2.4rem}
+  .eyebrow{color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem}
+  h2{font-size:2rem;letter-spacing:-.02em;margin:.4rem 0 .6rem}
+  .head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* Cards */
+  .grid{display:grid;gap:20px}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px;transition:.2s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(10,60,116,.1)}
+  .card .ico{width:46px;height:46px;border-radius:11px;background:#e7f0fb;color:var(--brand);display:grid;place-items:center;font-size:1.4rem;margin-bottom:1rem}
+  .card h3{font-size:1.05rem;margin-bottom:.35rem}
+  .card p{font-size:.93rem;color:var(--ink-soft)}
+
+  /* News */
+  .news{background:var(--white);border-top:1px solid var(--line)}
+  .news-card{background:var(--bg);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.2s}
+  .news-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(10,60,116,.08)}
+  .news-card .banner{height:120px;background:linear-gradient(135deg,var(--brand),var(--accent))}
+  .news-card .body{padding:20px}
+  .news-card .date{color:var(--accent);font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+  .news-card h3{font-size:1.02rem;margin:.3rem 0}
+  .news-card p{font-size:.9rem;color:var(--ink-soft)}
+
+  /* Footer */
+  footer{background:var(--ink);color:#aab8cc;padding:50px 0 28px;font-size:.9rem}
+  footer .cols{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  footer h4{color:#fff;font-size:1rem;margin-bottom:.7rem}
+  footer a{display:block;color:#aab8cc;padding:.18rem 0}
+  footer a:hover{color:#fff}
+  footer .copy{margin-top:34px;padding-top:20px;border-top:1px solid #2a3850;font-size:.82rem}
+
+  @media(max-width:860px){
+    .menu{display:none}
+    .hero h1{font-size:2.1rem}
+    .grid-4,.grid-3{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:520px){.grid-4,.grid-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="wrap">
+      <span>Student Community Portal · Computing Group</span>
+      <span><a href="#">Sign in</a> · <a href="#">Help</a></span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><span class="dot">C</span> Computing Portal</div>
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#learning">Learning</a>
+        <a href="#community">Community</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <span class="kicker">Computing Group</span>
+      <h1>Everything you need, all in one place.</h1>
+      <p>The home of the student community. Find your tools, courses, resources and support — built to help you learn, build and connect.</p>
+      <div class="actions">
+        <a class="btn btn-light" href="#services">Explore services</a>
+        <a class="btn btn-ghost" href="#learning">Browse courses</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Services</span>
+        <h2>Tools for every student</h2>
+        <p>Quick access to the everyday tools you use across the Computing group.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card"><div class="ico">✉️</div><h3>Email &amp; Accounts</h3><p>Your student email, login and digital identity.</p></div>
+        <div class="card"><div class="ico">📶</div><h3>Wi-Fi &amp; Network</h3><p>Connect to the campus network anywhere on site.</p></div>
+        <div class="card"><div class="ico">💻</div><h3>Software &amp; Apps</h3><p>Free licences and apps for your studies.</p></div>
+        <div class="card"><div class="ico">📚</div><h3>Library</h3><p>Books, journals and digital resources.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning -->
+  <section class="block" id="learning" style="background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Learning</span>
+        <h2>Keep building your skills</h2>
+        <p>Courses, workshops and resources curated for the student community.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><div class="ico">🎓</div><h3>Courses</h3><p>Short courses and modules to grow your knowledge.</p></div>
+        <div class="card"><div class="ico">🛠️</div><h3>Workshops</h3><p>Hands-on sessions on coding, design and tools.</p></div>
+        <div class="card"><div class="ico">🧭</div><h3>Resource Hub</h3><p>Guides, tutorials and templates to get you going.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community -->
+  <section class="block" id="community">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Community</span>
+        <h2>You're part of something</h2>
+        <p>Get involved, find support and connect with fellow students.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><div class="ico">🤝</div><h3>Get Involved</h3><p>Clubs, events and student-led projects.</p></div>
+        <div class="card"><div class="ico">💬</div><h3>Support</h3><p>Help desk and guidance whenever you need it.</p></div>
+        <div class="card"><div class="ico">📅</div><h3>Events</h3><p>What's on across the Computing group this term.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="block news" id="news">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">News</span>
+        <h2>Latest updates</h2>
+        <p>Stay in the loop with announcements and stories from the community.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="news-card"><div class="banner"></div><div class="body"><span class="date">26 Jun 2026</span><h3>New software licences now available</h3><p>Students can now access the latest design and coding tools for free.</p></div></div>
+        <div class="news-card"><div class="banner"></div><div class="body"><span class="date">20 Jun 2026</span><h3>Summer workshop programme opens</h3><p>Sign up for hands-on sessions running across July and August.</p></div></div>
+        <div class="news-card"><div class="banner"></div><div class="body"><span class="date">14 Jun 2026</span><h3>Faster Wi-Fi across campus</h3><p>Upgraded network now live in all study and common areas.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="wrap cols">
+      <div>
+        <h4>Computing Portal</h4>
+        <p>The home of the student community.<br>Computing Group · 2026</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <a href="#services">Services</a>
+        <a href="#learning">Learning</a>
+        <a href="#community">Community</a>
+        <a href="#news">News</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="#">Help desk</a>
+        <a href="#">Student email</a>
+        <a href="#">Wi-Fi setup</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>hello@creatiloom.com</p>
+      </div>
+    </div>
+    <div class="wrap copy">© 2026 Computing Group · Student Community Portal. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
